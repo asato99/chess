@@ -1,5 +1,6 @@
 from models.virtual_board import VirtualBoard
 from models.game_master import GameMaster
+from models.memory import Memory
 import copy
 
 def search_one_move_mate(virtualBoard, board, side, gm):
@@ -57,7 +58,7 @@ def mate_exist_check(virtualBoard, board, side, gm, depth):
 
 	return False
 
-def search_mate(virtualBoard, board, side, gm, depth):
+def search_mate(virtualBoard, memory, board, side, gm, depth):
 	depth += 1
 	virtualBoard.set_board(board)
 	virtualBoard.set_side(side)

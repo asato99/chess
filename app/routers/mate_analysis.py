@@ -5,6 +5,7 @@ from models.piece import AmbigPiece
 from services.domain.analysis import mate_analyze
 from models.virtual_board import VirtualBoard
 from models.game_master import GameMaster
+from models.memory import Memory
 
 router = APIRouter(
     prefix="/mate",
@@ -24,7 +25,8 @@ def analyze(param: PostedBoard):
     gm = GameMaster()
 
     virtualBoard = VirtualBoard(param.board, 'white', gm)
-    matingMoves = mate_analyze.search_mate(virtualBoard, param.board, 'white', gm, 0)
+    memory = Memory()
+    matingMoves = mate_analyze.search_mate(virtualBoard, memory, param.board, 'white', gm, 0)
 
     print(matingMoves)
 
