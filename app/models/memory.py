@@ -33,8 +33,17 @@ class Memory():
 		for move in moves:
 			opponent.append({'move':move, 'memory':{'move': None, 'opponent':[]}})
 			
-		memory = self.__get_target_memory
+		memory = self.__get_target_memory()
 		memory['opponent'] = opponent
+
+	def add_history(self, move):
+		self.history.append(move)
+
+	def remove_history(self):
+		self.history.pop()
+
+	def get_move_memory(self):
+		return self.moveMemory
 
 	def __get_target_memory(self):
 		memory = self.moveMemory

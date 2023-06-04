@@ -76,11 +76,13 @@ def search_mate(virtualBoard, memory, board, side, gm, depth):
 		matedCheck = True
 		opponentMoves = virtualBoard.get_legal_moves()
 		for oppoMove in opponentMoves:
+			memory.add_history(oppoMove)
 			upddBoard = virtualBoard.update_board(oppoMove)
 			virtualBoard.set_board(upddBoard)
 			virtualBoard.set_side(side)
 			copyBoard = copy.deepcopy(upddBoard)
 			if not search_mate(virtualBoard, copyBoard, side, gm, depth):
+				memory.remove_history()
 				matedCheck = False
 				break
 
@@ -89,6 +91,8 @@ def search_mate(virtualBoard, memory, board, side, gm, depth):
 
 		if matedCheck:
 			return True
+		else:
+			memory.remove_history()
 
 		virtualBoard.set_board(board)
 		virtualBoard.set_side(side)
