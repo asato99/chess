@@ -14,11 +14,11 @@ class Prospector():
         branch = [{'prospect':0.5, 'move':move, 'side':side, 'branch':[]} for move in moves]
 
     def update_prospect(self, prospect):
-        branch = self.__move_node()
+        branch = self.__move_to_current_node()
         branch['prospect'] = prospect
 
 
-    def __move_node(self):
+    def __move_to_current_node(self):
         branch = self.prospect_tree['branch']
         for move in self.tree_path:
             for tree in branch:

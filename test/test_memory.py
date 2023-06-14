@@ -1,5 +1,5 @@
 import sys
-sys.path.append('../../../')
+sys.path.append('..')
 import unittest
 from app.models.memory import Memory
 

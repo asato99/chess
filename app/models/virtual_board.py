@@ -1,4 +1,4 @@
-from models.piece import AmbigPiece
+from .piece import AmbigPiece
 import copy
 
 class VirtualBoard():
